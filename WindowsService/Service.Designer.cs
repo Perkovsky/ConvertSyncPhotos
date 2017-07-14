@@ -1,6 +1,6 @@
 ﻿namespace WindowsService
 {
-    partial class Service1
+    partial class Service
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            this.ServiceName = "Service1";
+
+            //TODO: change service name
+            this.ServiceName = "Test My NT-Service";
         }
 
         #endregion

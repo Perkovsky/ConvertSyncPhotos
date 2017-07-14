@@ -16,7 +16,7 @@ namespace WindowsService
             file = new FileInfo(@"c:\log_watcher.txt");
             writer = file.CreateText();
 
-            watcher = new FileSystemWatcher(@"c:\");
+            watcher = new FileSystemWatcher(@"c:\downloads\");
             watcher.Created += WatcherChanged;
             watcher.Deleted += WatcherChanged;
             watcher.Renamed += WatcherChanged;

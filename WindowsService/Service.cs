@@ -18,10 +18,6 @@ namespace WindowsService
 
             //file = new FileInfo(@"log_watcher.txt");
             //writer = file.CreateText();
-            
-
-            // test!!!
-
 
             //watcher = new FileSystemWatcher(@"c:\");
             //watcher.Created += WatcherChanged;

@@ -13,10 +13,10 @@ namespace WindowsService
         {
             InitializeComponent();
 
-            file = new FileInfo(@"c:\log_watcher.txt");
+            file = new FileInfo(@"log_watcher.txt");
             writer = file.CreateText();
 
-            watcher = new FileSystemWatcher(@"c:\downloads\");
+            watcher = new FileSystemWatcher(@"c:\");
             watcher.Created += WatcherChanged;
             watcher.Deleted += WatcherChanged;
             watcher.Renamed += WatcherChanged;

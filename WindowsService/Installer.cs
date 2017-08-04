@@ -16,8 +16,8 @@ namespace WindowsService
 
             serviceInstaller = new ServiceInstaller();
             //TODO: change service name and description
-            serviceInstaller.ServiceName = "Test My NT-Service";
-            serviceInstaller.Description = "This is my NT-Service!";
+            serviceInstaller.ServiceName = "Convert and sync photos";
+            serviceInstaller.Description = "";
             serviceInstaller.StartType = ServiceStartMode.Automatic;
 
             base.Installers.Add(processInstaller);

@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
 
             //TODO: change service name
-            this.ServiceName = "Test My NT-Service";
+            this.ServiceName = "Convert and sync photos";
         }
 
         #endregion

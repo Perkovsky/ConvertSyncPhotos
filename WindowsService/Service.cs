@@ -1,42 +1,54 @@
-﻿using System.IO;
-using System.ServiceProcess;
+﻿using System.ServiceProcess;
 
 namespace WindowsService
 {
     public partial class Service : ServiceBase
     {
-        FileInfo file;
-        StreamWriter writer;
-        FileSystemWatcher watcher;
+        private readonly Watcher watcher;
+
+        //FileInfo file;
+        //StreamWriter writer;
+        //FileSystemWatcher watcher;
 
         public Service()
         {
             InitializeComponent();
 
-            file = new FileInfo(@"log_watcher.txt");
-            writer = file.CreateText();
+            watcher = new Watcher(new Logger());
 
-            watcher = new FileSystemWatcher(@"c:\");
-            watcher.Created += WatcherChanged;
-            watcher.Deleted += WatcherChanged;
-            watcher.Renamed += WatcherChanged;
-            watcher.Changed += WatcherChanged;
+            //file = new FileInfo(@"log_watcher.txt");
+            //writer = file.CreateText();
+            
+
+            // test!!!
+
+
+            //watcher = new FileSystemWatcher(@"c:\");
+            //watcher.Created += WatcherChanged;
+            //watcher.Deleted += WatcherChanged;
+            //watcher.Renamed += WatcherChanged;
+            //watcher.Changed += WatcherChanged;
         }
 
-        void WatcherChanged(object sender, FileSystemEventArgs e)
-        {
-            writer.WriteLine("Directory changed({0}): {1}", e.ChangeType, e.FullPath);
-            writer.Flush();
-        }
+        //void WatcherChanged(object sender, FileSystemEventArgs e)
+        //{
+        //    writer.WriteLine("Directory changed({0}): {1}", e.ChangeType, e.FullPath);
+        //    writer.Flush();
+        //}
 
         protected override void OnStart(string[] args)
         {
-            watcher.EnableRaisingEvents = true;
+            //watcher.EnableRaisingEvents = true;
+            if (!watcher.Start())
+            {
+                watcher.Log(string.Format(@"{0}\settings.xml", GeneralMethods.GetCurrentDirectory()), "Not started! Specify settings.");
+            }
         }
 
         protected override void OnStop()
         {
-            watcher.EnableRaisingEvents = false;
+            //watcher.EnableRaisingEvents = false;
+            watcher.Stop();
         }
 
         protected override void OnContinue()
